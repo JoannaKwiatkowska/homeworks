@@ -130,6 +130,7 @@ while zapytaj_ponownie == "T":
 #    A jeszcze większym atutem będzie gdy będzie można podać liste zagnieżdżoną i narysuje się tabela z odpowiednią ilością wierszy i kolumn :)
     elif zadanie == "6":
         print("\nWybrałeś zadanie 6")
+        print("Upss... Nie zdążyłąm jeszcze tego zadania ogarnąć do końca ;)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
@@ -255,16 +256,26 @@ while zapytaj_ponownie == "T":
 # (...)
     elif zadanie == "10":
         print("\nWybrałeś zadanie 10")
-        print("Upss... Nie zdążyłąm ;)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
 
             dane = "215021482120211921002076207620502065202020152010200520002001199319901950183417501744186019462010"
 
+            print("(...)")
+            for i in range(0,len(dane),4):
+                temp = float(f"{dane[i:(i+2)]}.{dane[(i+2):(i+4)]}")
+                if temp<=18.5:
+                    print(f"{int(i/4)}:00\t{temp}\u00b0C\t!!")
+                elif temp<=20:
+                    print(f"{int(i/4)}:00\t{temp}\u00b0C\t!")
+                else:
+                    print(f"{int(i/4)}:00\t{temp}\u00b0C\t")
+            print("(...)")
+
             print("Koniec zadania 10")
 
-        jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
+            jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 
     else:
         print(f"\nWpisałeś {zadanie} - takiego zadania nie było do zrobienia")
