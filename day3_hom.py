@@ -15,16 +15,22 @@ while zapytaj_ponownie == "T":
             skala=input("Z której skali chcesz przeliczyć stopie: Fahrenheita czy Celsjusza? [F/C]")
             if skala.upper() == "F":
                 print("Wybrano przeliczanie z Fahrenheita na Celsjusza")
-                Fahrenheit = float(input("Podaj temperaturę w stopniach Fahrenheita: "))
-                Celsjusz_temp = round(((Fahrenheit-32)/1.8),1)
-                print(f"{Fahrenheit} stopni Fahrenheit to {Celsjusz_temp} w stopaniach Celsjusza")
-                print(f"Wzór to: (Fahrenheit-32)/1.8") #jak poadż wzór z zmiennej Celsjusz_temp?
+                Fahrenheit = input("Podaj temperaturę w stopniach Fahrenheita: ")
+                if Fahrenheit.isdigit() == True: #tutaj powinno być sprawdzenie czy liczba jest float
+                    Celsjusz_temp = round(((float(Fahrenheit)-32)/1.8),1)
+                    print(f"{Fahrenheit} stopni Fahrenheit to {Celsjusz_temp} w stopaniach Celsjusza")
+                    print(f"Wzór to: (Fahrenheit-32)/1.8") #jak poadż wzór z zmiennej Celsjusz_temp?
+                else:
+                    print(f"{Fahrenheit} to nie jest poprwana temperatura")
             elif skala.upper() == "C":
                 print("Wybrano przeliczanie z Celsjusza na Fahrenheita")
-                Celsjusz = float(input("Podaj temperaturę w stopniach Celsjusza: "))
-                Fahrenheit_temp = round((32 + 1.8*Celsjusz),1)
-                print(f"{Celsjusz} stopni Celsjusza to {Fahrenheit_temp} w stopaniach Fahrenheita")
-                print(f"Wzór to: 32 + 1.8*Celsjusz") #jak poadż wzór z zmiennej Fahrenheit_temp?
+                Celsjusz = input("Podaj temperaturę w stopniach Celsjusza: ")
+                if Celsjusz.isdigit() == True: #tutaj powinno być sprawdzenie czy liczba jest float
+                    Fahrenheit_temp = round((32 + 1.8*(float(Celsjusz))),1)
+                    print(f"{Celsjusz} stopni Celsjusza to {Fahrenheit_temp} w stopaniach Fahrenheita")
+                    print(f"Wzór to: 32 + 1.8*Celsjusz") #jak poadż wzór z zmiennej Fahrenheit_temp?
+                else:
+                    print(f"{Celsjusz} to nie jest poprwana temperatura")
             else:
                 print("Wpisłeś niepoprawną wartość")
 
@@ -57,7 +63,7 @@ while zapytaj_ponownie == "T":
 
 # 3. Napisz program, który rysuje prostokąt o zadanych rozmiarach (wysokość i szerokość) za pomocą znaków | (bok) - (góra/dół) + (wierzchołek)
     elif zadanie == "3":
-        print("\nWybrałeś zadanie 3")
+        print("\nWybrałeś zadanie 3 (rysowanie prostokąta)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
@@ -69,7 +75,7 @@ while zapytaj_ponownie == "T":
                 for i in range(0,int(bok_b)):
                     print("|" + int(bok_a)*" " + "|")
                 print("+" + int(bok_a)*"-" + "+")
-            else: print("To nie jest poprawna liczba")
+            else: print("Wpisałeś coś co nie jest liczbą całkowitą")
 
             print("Koniec zadania 3")
 
@@ -81,19 +87,26 @@ while zapytaj_ponownie == "T":
 #cyfra = 1*0+1*2+1*4+1*8+1*16+1*32 = 63
 #cyfra[-1]*2**0 + cyfra[-2]*2**1 + cyfra[-3]*3**2 + cyfra[-4]*4**3 + cyfra[-5]*2**4 + cyfra[-6]*2**5 #zapis zaczyna się od tyłu
     elif zadanie == "4":
-        print("\nWybrałeś zadanie 4")
+        print("\nWybrałeś zadanie 4 (Przeliczanie liczy binarnej na dziesiętną)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
 
             binarna = input("Podaj liczbę binarną do przeliczenia na dziesiętną: ")
             licznik = int(1)
-            wynik = int(binarna[-1])**0 #ostatnia liczba do potęgi zerowej 0**=0, dowolna inna liczba**0=1
-            while licznik in range(1,len(binarna)):
-                dziesiętna = int(binarna[-(licznik+1)])*2**(licznik) #dlaczego 1 do potęgi 0 daje zero?
-                wynik = wynik + dziesiętna
-                licznik = licznik+1
-            print(f"Liczba binarna {binarna} to liczba dziesiętna {wynik}")
+            wynik = int(binarna[-1]) ** 0  # ostatnia liczba do potęgi zerowej 0**=0, dowolna inna liczba**0=1
+            #niebinarne = ["2","3","4","5","6","7","8","9"]
+            if "2" not in list(binarna) and "3" not in list(binarna) and "4" not in list(binarna) and "5" not in list(binarna)\
+                    and "6" not in list(binarna) and "7" not in list(binarna) and "8" not in list(binarna) and "9" not in list(binarna):
+                    #binarna.find("1") != 0 or binarna.find("0") != 0:
+                while licznik in range(1,len(binarna)):
+                    dziesiętna = int(binarna[-(licznik+1)])*2**(licznik) #dlaczego 1 do potęgi 0 daje zero?
+                    wynik = wynik + dziesiętna
+                    licznik = licznik+1
+                print(f"Liczba binarna {binarna} to liczba dziesiętna {wynik}")
+            else:
+                print(f"Liczba {binarna} nie jest liczbą binarną")
+            #print(f"Liczba binarna {binarna} to liczba dziesiętna {wynik}")
 
             print("Koniec zadania 4")
 
@@ -102,12 +115,12 @@ while zapytaj_ponownie == "T":
 
 # 5. Napisz program do sprawdzania czy podany rok jest rokiem przestępnym
     elif zadanie == "5":
-        print("\nWybrałeś zadanie 5")
+        print("\nWybrałeś zadanie 5 (Sprawdzanie czy rok jest przestępny)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
 
-            rok=input("Podaj rok: ")
+            rok=input("Podaj rok do sprawdzenia: ")
             if len(rok) != 4 or rok.isdigit()==False: #sprawdza czy długość ma więcej niż 4 znaki oraz czy znaki są liczbami
                 print(f"{rok} to nie jest poprawny rok")
             elif int(rok) % 4 == 0: #rok przestęny jest podzielny przez 4
@@ -121,7 +134,7 @@ while zapytaj_ponownie == "T":
 
             jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 
-    # 6. Stwórz program który przyjmie w parametrze dowolną listę np ['col1', 'col2', 'col3'] i wyświetli:
+# 6. Stwórz program który przyjmie w parametrze dowolną listę np ['col1', 'col2', 'col3'] i wyświetli:
 #    +------+------+------+
 #    | col1 | col2 | col3 |
 #    +------+------+------+
@@ -129,7 +142,7 @@ while zapytaj_ponownie == "T":
 #    Maksymalna szerokość kolumny np 30znaków jesli tekst będzie za długi niech zawartość przycina się i kończy trzema kropkami.
 #    A jeszcze większym atutem będzie gdy będzie można podać liste zagnieżdżoną i narysuje się tabela z odpowiednią ilością wierszy i kolumn :)
     elif zadanie == "6":
-        print("\nWybrałeś zadanie 6")
+        print("\nWybrałeś zadanie 6 (Zadanie z listą)")
         print("Upss... Nie zdążyłąm jeszcze tego zadania ogarnąć do końca ;)")
 
         jeszcze_raz = "T"
@@ -165,7 +178,7 @@ while zapytaj_ponownie == "T":
 
 # 7. Program przyjmuje kwotę w parametrze i wylicza jak rozmienić to na monety: 5, 2, 1, 0.5, 0.2, 0.1 wydając ich jak najmniej.
     elif zadanie == "7":
-        print("\nWybrałeś zadanie 7")
+        print("\nWybrałeś zadanie 7 (rozmieniarka)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
@@ -178,16 +191,17 @@ while zapytaj_ponownie == "T":
             moneta_50gr = (kwota - 5*moneta_5zł - 2*moneta_2zł - 1*moneta_1zł)//0.5
             moneta_20gr = round((kwota - 5*moneta_5zł - 2*moneta_2zł - 1*moneta_1zł - 0.5*moneta_50gr),3)//0.2
             moneta_10gr = round((kwota - 5*moneta_5zł - 2*moneta_2zł - 1*moneta_1zł - 0.5*moneta_50gr - 0.2*moneta_20gr),3)//0.1
+            reszta = round((kwota - 5*moneta_5zł - 2*moneta_2zł - 1*moneta_1zł - 0.5*moneta_50gr - 0.2*moneta_20gr - 0.1*moneta_10gr),3)
 
-            if kwota % 0.10 != 0: # czy liczba ułamkowa jest zaokrąglona do 10 gr?
-                print("Liczba nie jest zaokrąglona do 10 gr")
-            else:
-                print(f"Monet 5 zł: {int(moneta_5zł)}")
-                print(f"Monet 2 zł: {int(moneta_2zł)}")
-                print(f"Monet 1 zł: {int(moneta_1zł)}")
-                print(f"Monet 0.50 gr: {int(moneta_50gr)}")
-                print(f"Monet 0.20 gr: {int(moneta_20gr)}")
-                print(f"Monet 0.10 gr: {int(moneta_10gr)}")
+            print(f"Kwotę {kwota} najlepiej rozmienić tak:")
+            print(f"Monet 5 zł: {int(moneta_5zł)}")
+            print(f"Monet 2 zł: {int(moneta_2zł)}")
+            print(f"Monet 1 zł: {int(moneta_1zł)}")
+            print(f"Monet 0.50 gr: {int(moneta_50gr)}")
+            print(f"Monet 0.20 gr: {int(moneta_20gr)}")
+            print(f"Monet 0.10 gr: {int(moneta_10gr)}")
+            if reszta != 0:
+                print(f"Nie podałeś liczby całkowitej, więc reszta {reszta} zł jest dla mnie")
 
             print("Koniec zadania 7")
 
@@ -198,14 +212,18 @@ while zapytaj_ponownie == "T":
 #      ###
 #     #####
     elif zadanie == "8":
-        print("\nWybrałeś zadanie 8")
+        print("\nWybrałeś zadanie 8 (rysowanie piramidy)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
 
-            wysokość = int(input("Jak wysoka ma być piramida? "))
-            for i in range(1, (wysokość+1)):
-                print(((wysokość)-i)*" " + ((i*2)-1) * "#")
+            wysokość = input("Ile pięter ma mieć piramida? ")
+            if wysokość.isdigit() == True:
+                wysokość = int(wysokość)
+                for i in range(1, (wysokość+1)):
+                    print(((wysokość)-i)*" " + ((i*2)-1) * "#")
+            else:
+                print(f"{wysokość} to nie jest liczba całkowita. Jakby miałabym narysować półpiętra? :)")
             print("Koniec zadania 8")
 
             jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
@@ -215,25 +233,29 @@ while zapytaj_ponownie == "T":
 #    Przez pierwsze dwa lata, każdy psi rok to 10,5 ludzkiego roku, przez reszte lat psi rok to 4 ludzkie lata
 #    Np: 15 ludzkich lat to 73 psie lata
     elif zadanie == "9":
-        print("\nWybrałeś zadanie 9")
+        print("\nWybrałeś zadanie 9 (kalkulator do wyliczania wieku psa)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
 
-            lata = int(input("Podaj wiek psa, ja ci przeliczę na ludzkie lata ")) #a jak ktoś poda wiek po przecinku?
+            lata_str = input("Podaj wiek psa, ja ci przeliczę na ludzkie lata. Podaj liczbę całkowitą ")
 
-            if lata <= 2:
-                wiek_psa = lata*10.5
-                if lata == 1:
-                    print(f"Ludzki {lata} rok to pieskie {wiek_psa} lat")
-                if lata == 2:
-                    print(f"Ludzkie {lata} lata to pieskie {wiek_psa} lat")
-            elif lata >= 3:
-                wiek_psa = int(2*10.5) + (lata-2)*4
-                if lata <= 4:
-                    print(f"{lata} ludzkie lata to pieskie {wiek_psa} lat")
-                if lata >=5:
-                    print(f"{lata} ludzkich lat to pieskie {wiek_psa} lata")
+            if lata_str.isdigit() == False:
+                print(f"{lata_str} to nie jest liczba całkowita")
+            else:
+                lata = int(lata_str)
+                if int(lata) <= 2:
+                    wiek_psa = lata*10.5
+                    if lata == 1:
+                        print(f"Ludzki {lata} rok to pieskie {wiek_psa} lat")
+                    if lata == 2:
+                        print(f"Ludzkie {lata} lata to pieskie {wiek_psa} lat")
+                elif int(lata) >= 3:
+                    wiek_psa = int(2*10.5) + (lata-2)*4
+                    if lata <= 4:
+                        print(f"{lata} ludzkie lata to pieskie {wiek_psa} lat")
+                    if lata >= 5:
+                        print(f"{lata} ludzkich lat to pieskie {wiek_psa} lata")
 
             print("Koniec zadania 9")
 
@@ -255,7 +277,7 @@ while zapytaj_ponownie == "T":
 # 23:00:  20.10°C
 # (...)
     elif zadanie == "10":
-        print("\nWybrałeś zadanie 10")
+        print("\nWybrałeś zadanie 10 (odczty temperatury)")
 
         jeszcze_raz = "T"
         while jeszcze_raz == "T":
