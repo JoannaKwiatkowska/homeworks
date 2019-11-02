@@ -287,9 +287,9 @@ while zapytaj_ponownie == "T":
             print("(...)")
             for i in range(0,len(dane),4):
                 temp = float(f"{dane[i:(i+2)]}.{dane[(i+2):(i+4)]}")
-                if temp<=18.5:
+                if temp <= 18.5:
                     print(f"{int(i/4)}:00\t{temp}\u00b0C\t!!")
-                elif temp<=20:
+                elif temp <= 20:
                     print(f"{int(i/4)}:00\t{temp}\u00b0C\t!")
                 else:
                     print(f"{int(i/4)}:00\t{temp}\u00b0C\t")
@@ -305,9 +305,36 @@ while zapytaj_ponownie == "T":
 
     zapytaj_ponownie=input("\nCzy chcesz zobaczyć inne moje rozwiązania zadań? [T/N]").upper()
 
-print("Dzięki, że tu zajrzałeś")
+print("Dzięki, że tu zajrzałeś 😉")
 
 # Uwagi:
 # - Plusem będzie jeśli program choć w minimalnym stopniu zabezpieczymy przed wprowadzaniem niepoprawnych danych
 # - Kolejnym plusem będzie fajna integracja z użytkownikiem np: pytanie który "podprogram" wykonać, czy wykonać coś poraz kolejny albo czy wyjść z programu
 # - Niektóre programiki można wykonać bardzo szybko (np. piramidę) za pomocą wbudowanych funkcji pythona ale jeśli ktoś zrobi to na piechotę i wymyśli jakiś algorytm też będzie super :)
+
+
+
+# print("Zadanie 10 - rozwiązanie z zajęć")
+# dane = "215021482120211921002076207620502065202020152010200520002001199319901950183417501744186019462010"
+#
+# #dla ułatwienia można to sobie tak rozpisać
+# dane[0:4] #0
+# dane[4:8] #1
+# dane[8:12] #2
+# dane[12:16] #3
+# dane[16:20] #4
+#
+# for godzina in range(0,24):
+#     poczatek_zakresu = godzina * 4
+#     koniec_zakresu = poczatek_zakresu + 4
+#     temp = int(dane[poczatek_zakresu:koniec_zakresu]) / 100
+#     tab = "" #tab można zdefinowac przez ifem, albo w else do ifa
+#     if temp <= 18.5:
+#         tab = "\t!"
+#     elif temp <= 20:
+#         tab = "\t!!"
+#     # else:
+#     #     tab = ""
+#
+#     wiersz_string = f"{godzina}:00\t {temp}\u00b0C{tab}"
+#     print(wiersz_string)
