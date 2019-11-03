@@ -17,9 +17,7 @@
 def rysowanie_prostokąta():
     """Funkcja rysująca prostokąt o zadanych rozmiarach (wysokość i szerokość)
      za pomocą znaków | (bok) - (góra/dół) + (wierzchołek)"""
-
     print("Rysowanie prostokątu o zadanych parametrach")
-
     powtórz_zadanie = "T"
     while powtórz_zadanie == "T":
         bok_a = input("Podaj wymiar pierwszego boku: ")
@@ -31,7 +29,6 @@ def rysowanie_prostokąta():
             print("+" + int(bok_a) * "-" + "+")
         else:
             print("Wpisałeś nieporpawne wartości. Użyj tylko liczb całkowitych")
-
         powtórz_zadanie = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def rysowanie_piramidy():
@@ -41,77 +38,68 @@ def rysowanie_piramidy():
       #####
     """
     print("\nRysowanie piramidy o określonej wysokości")
-
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
         wysokość = input("Ile pięter ma mieć piramida? ")
-
         if wysokość.isdigit() == True:
             wysokość = int(wysokość)
             for i in range(0, wysokość):
                 print(" "*(wysokość-i-1)+"#"+"#"*i*2)
         else:
             print(f"{wysokość} to nie jest liczba całkowita. Jakby miałabym narysować półpiętra? :)")
-
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
-
 #=======================================================================================================================
 def kalkulator_Celsjusz_Fahenheit():
     """Kalkulator do przeliczania stopni Celsjusza na Fahrenheita"""
     print("\nPrzeliczanie stopni Celsjusza na Fahrenheita")
-
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-        Celsjusz = input("Podaj temperaturę w stopniach Celsjusza: ")
-        if Celsjusz.isdigit() == True:  # tutaj powinno być sprawdzenie czy liczba jest float a nie integer
-            Fahrenheit_temp = round((32 + 1.8 * (float(Celsjusz))), 1)
-            print(f"{Celsjusz} stopni Celsjusza to {Fahrenheit_temp} w stopaniach Fahrenheita")
-            print(f"Wzór to: 32 + 1.8*Celsjusz")  # jak poadż wzór z zmiennej Fahrenheit_temp?
+        Celsjusz_str = input("Podaj temperaturę w stopniach Celsjusza: ")
+        if Celsjusz_str.isdigit() == True:  # tutaj powinno być sprawdzenie czy liczba jest float a nie integer
+            Celsjusz = float(Celsjusz_str)
+            wzór = 32 + 1.8 * Celsjusz  # jak podać wzór jako zawartość, a nie jako wynik do zmiennej wynik?
+            Fahrenheit_temp = round(wzór, 1)
+            wynik = f"{Celsjusz} stopni Celsjusza to {Fahrenheit_temp} w stopaniach Fahrenheita. {wzór}"
         else:
-            print(f"{Celsjusz} to nie jest poprwana temperatura")
-
+            wynik = f"{Celsjusz} to nie jest poprwana temperatura"
+        print(wynik)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def kalkulator_Fahenheit_Celsjusz():
     """Kalkulator do przeliczania stopni Fahrenheita na Celsjusza"""
     print("\nPrzeliczanie stopni Fahrenheita na Celsjusza")
-
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
         Fahrenheit = input("Podaj temperaturę w stopniach Fahrenheita: ")
         if Fahrenheit.isdigit() == True:  # tutaj powinno być sprawdzenie czy liczba jest float a nie integer
             Celsjusz_temp = round(((float(Fahrenheit) - 32) / 1.8), 1)
-            print(f"{Fahrenheit} stopni Fahrenheit to {Celsjusz_temp} w stopaniach Celsjusza")
-            print(f"Wzór to: (Fahrenheit-32)/1.8")  # jak poadż wzór z zmiennej Celsjusz_temp?
+            wynik = f"{Fahrenheit} stopni Fahrenheit to {Celsjusz_temp} w stopaniach Celsjusza. Wzór to: (Fahrenheit-32)/1.8"
+            # jak poadż wzór z zmiennej Celsjusz_temp?
         else:
-            print(f"{Fahrenheit} to nie jest poprwana temperatura")
-
+            wynik = f"{Fahrenheit} to nie jest poprwana temperatura"
+        print(wynik)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def cyfra_pierwsza_ostatnia():
     """Program, który podaje pierwszą i ostatnią cyfrę podanej liczby"""
-    print("\nPrzeliczanie stopni Fahrenheita na Celsjusza")
+    print("\nPierwsza i ostatnia cyfra podanej liczby")
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-
         liczba = input("Podaj dwolną liczbę całkowitą: ")
-
         if liczba.isdigit() == False:
-            print(f"{liczba} to nie jest liczba całkowita")
+            wynik = f"{liczba} to nie jest liczba całkowita"
         else:
             print(f"Wpisano liczbę {liczba}")
             cyfra_pierwsza = liczba[0]
             cyfra_ostatania = liczba[-1]
-            print(f"Pierwsza cyfra to {cyfra_pierwsza}")
-            print(f"Ostatnia cyfra to {cyfra_ostatania}")
-
+            wynik = f"Pierwsza cyfra to {cyfra_pierwsza}, ostatnia cyfra to {cyfra_ostatania}"
+        print(wynik)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
-def binara_na_dziesiętną():
+def binara_na_dziesiętną(): #to jest do dopracowania
     """Przeliczanie liczy binarnej na dziesiętną"""
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-
         binarna = input("Podaj liczbę binarną do przeliczenia na dziesiętną: ")
         licznik = int(1)
         wynik = int(binarna[-1]) ** 0  # ostatnia liczba do potęgi zerowej 0**=0, dowolna inna liczba**0=1
@@ -133,49 +121,47 @@ def binara_na_dziesiętną():
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def rok_przestępny():
-    """Program do sprawdzania czy podany rok jest rokiem przestępnym"""
+    """Program do sprawdzania czy podany rok jest rokiem przestępnym.
+    Rok przestęny jest podzielny przez 4 i nie jest podzielny przez 100
+    lub jest przestępny jeżeli rok jest podzielny przez 400."""
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-
         rok = input("Podaj rok do sprawdzenia: ")
-        if len(
-                rok) != 4 or rok.isdigit() == False:  # sprawdza czy długość ma więcej niż 4 znaki oraz czy znaki są liczbami
-            print(f"{rok} to nie jest poprawny rok")
-        elif int(rok) % 4 == 0:  # rok przestęny jest podzielny przez 4
-            print(f"Rok {rok} jest przestępny")
-        elif int(
-                rok) % 100 == 0 and rok % 400 == 0:  # rok przestęny jest podzielny przez 100 i 400, ale lata podzielne przez 100, ale niepodzielne przez 400 nie są przestępne.
-            print(f"Rok {rok} nie jest przestępny")
+        if len(rok) != 4 or rok.isdigit() == False:  # sprawdza czy są 4 znaki oraz czy znaki są liczbami
+            wynik = f"{rok} to nie jest poprawny rok"
+        elif (int(rok) % 4 == 0 and int(rok) % 100 != 0) or int(rok) % 400 == 0:
+            wynik = f"Rok {rok} jest przestępny"
         else:
-            print(f"Rok {rok} nie jest przestępny")
-
+            wynik = f"Rok {rok} nie jest przestępny"
+        print(wynik)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def kalkulator_piskie_lata():
-    """Kalkulator do wyliczania wieku psa"""
-
+    """Kalkulator do wyliczania wieku psa."""
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-
-        lata_str = input("Podaj wiek psa, ja ci przeliczę na ludzkie lata. Podaj liczbę całkowitą ")
-
-        if lata_str.isdigit() == False:
-            print(f"{lata_str} to nie jest liczba całkowita")
+        wiek_psa_str = input("Podaj wiek psa, a ja ci przeliczę na ludzkie lata. Podaj liczbę całkowitą ")
+        if wiek_psa_str.isdigit() == False:
+            wynik=f"{wiek_psa_str} to nie jest liczba całkowita"
         else:
-            lata = int(lata_str)
-            if int(lata) <= 2: # Przez pierwsze dwa lata, każdy psi rok to 10,5 ludzkiego roku
-                wiek_psa = lata * 10.5
-                if lata == 1:
-                    print(f"Ludzki {lata} rok to pieskie {wiek_psa} lat")
-                if lata == 2:
-                    print(f"Ludzkie {lata} lata to pieskie {wiek_psa} lat")
-            elif int(lata) >= 3: # po drugim roku psi rok to 4 ludzkie lata
-                wiek_psa = int(2 * 10.5) + (lata - 2) * 4
-                if lata <= 4:
-                    print(f"{lata} ludzkie lata to pieskie {wiek_psa} lat")
-                if lata >= 5:
-                    print(f"{lata} ludzkich lat to pieskie {wiek_psa} lata")
-
+            # obliczanie wieku psa
+            wiek_psa_int = int(wiek_psa_str)
+            if wiek_psa_int <= 2: # przez pierwsze dwa lata, każdy psi rok to 10,5 ludzkiego roku
+                ludzkie_lata = wiek_psa_int * 10.5
+            else:  # po drugim roku psi rok to 4 ludzkie lata
+                ludzkie_lata = int(2 * 10.5) + (wiek_psa_int - 2) * 4
+            # sprawdzanie poprawnej odmiany liczb dla lat psich
+            odmiana_liczby_pies = "lat" # w liczbach po cyfrach 0, 1 i od 5 do 9 występuje dopełniacz liczby mnogiej
+            if wiek_psa_int == 1:
+                odmiana_liczby_pies = "rok"
+            elif wiek_psa_str[-1] in ("2","3","4"): # w liczbach po cyfrach 2,3 i 4 występuje rzeczownik w mianowniku
+                odmiana_liczby_pies = "lata"
+            # sprawdzanie poprawnej odmiany liczb dla lat ludzkich
+            odmiana_liczby_człowiek = "lat"
+            if str(ludzkie_lata)[-1] in ("2","3","4"):
+                odmiana_liczby_człowiek = "lata"
+            wynik = f"{wiek_psa_int} {odmiana_liczby_pies} dla psa to ludzkie {ludzkie_lata} {odmiana_liczby_człowiek}"
+        print(wynik)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def odczyty_temperatury():
@@ -186,9 +172,7 @@ def odczyty_temperatury():
     Dla odczytów niższych niż lub równych 18,5°C dodany jeest dodatkowy wykrzyknik"""
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-
         dane = "215021482120211921002076207620502065202020152010200520002001199319901950183417501744186019462010"
-
         print("(...)")
         for odczyt in range(0, 24): #gdyby string nie był znanej długości wtedy range(0, len(dane), 4)
             początek_zakresu = odczyt*4 #co 4 cyfry ropzoczyna się nowy odczyt
@@ -211,36 +195,24 @@ def odczyty_temperatury():
             wiersz_string = f"{odczyt_format}:00\t{temp_float}\u00b0C{tab}"  # \u00b0 to znak unicode stopni Celsjusza
             print(wiersz_string)
         print("(...)")
-
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def rozmieniarka_pieniędzy():
-    """Program przyjmuje kwotę w parametrze i wylicza jak rozmienić to na monety: 5, 2, 1, 0.5, 0.2, 0.1 wydając ich jak najmniej."""
+    """Program przyjmuje kwotę w parametrze i wylicza jak rozmienić to na monety: 5, 2, 1, 0.5, 0.2, 0.1
+    wydając ich jak najmniej."""
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-
+        monety = [5,2,1,0.5,0.2,0.1]
         kwota = float(input("Ile chcesz rozmienić? Możesz podać kwotę w zaokrągleniu do 10 groszy "))
-
-        moneta_5zł = (kwota // 5)  # znak // dzieli obcnając resztę nazywa się to floor division albo integer division
-        moneta_2zł = (kwota - 5 * moneta_5zł) // 2
-        moneta_1zł = (kwota - 5 * moneta_5zł - 2 * moneta_2zł) // 1
-        moneta_50gr = (kwota - 5 * moneta_5zł - 2 * moneta_2zł - 1 * moneta_1zł) // 0.5
-        moneta_20gr = round((kwota - 5 * moneta_5zł - 2 * moneta_2zł - 1 * moneta_1zł - 0.5 * moneta_50gr), 3) // 0.2
-        moneta_10gr = round((kwota - 5 * moneta_5zł - 2 * moneta_2zł - 1 * moneta_1zł - 0.5 * moneta_50gr - 0.2 * moneta_20gr),3) // 0.1
-        reszta = round((kwota - 5 * moneta_5zł - 2 * moneta_2zł - 1 * moneta_1zł - 0.5 * moneta_50gr - 0.2 * moneta_20gr - 0.1 * moneta_10gr),3)
-
-        print(f"Kwotę {kwota} najlepiej rozmienić tak:")
-        print(f"Monet 5 zł: {int(moneta_5zł)}")
-        print(f"Monet 2 zł: {int(moneta_2zł)}")
-        print(f"Monet 1 zł: {int(moneta_1zł)}")
-        print(f"Monet 0.50 gr: {int(moneta_50gr)}")
-        print(f"Monet 0.20 gr: {int(moneta_20gr)}")
-        print(f"Monet 0.10 gr: {int(moneta_10gr)}")
+        for moneta in monety:
+            rozmienione = kwota//moneta # znak // dzieli obcniając resztę (nazwa to floor division lub integer division)
+            kwota = kwota - rozmienione*moneta # to jest reszta która została do rozmienienia
+            do_wydania = f"Monet {moneta} zł: {rozmienione}"
+            print(do_wydania)
+        reszta = round(kwota,2)
         if reszta != 0:
-            print(f"Nie podałeś liczby całkowitej, więc reszta {reszta} zł jest dla mnie")
-
-        print("Koniec zadania 7")
-
+            reszta = f"Nie podałeś liczby zaokrąglonej do 10 gr, więc reszta {reszta} zł jest dla mnie"
+            print(reszta)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def rysowanie_listy():
@@ -254,31 +226,57 @@ def rysowanie_listy():
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
 
-        wersja = input("Zrobiłam dwie wersja - na kolumny lub wiersze. K/W").capitalize()
-        lista = ['tutaj jest komórka 1', 'tutaj jest komórka 2', 'tutaj jest komórka 3 - ostatnia na liście']
-
-        if wersja == "W":  # wersja na wiersze
-            i = 0
-            for opis in lista:
-                print("+" + 30 * "-" + "+")
-                if len(lista[i]) > 30:
-                    print("|" + lista[i][:27] + "..." + "|")
-                else:
-                    print("|" + lista[i] + (30 - len(lista[i])) * " " + "|")
-                print("+" + 30 * "-" + "+")
-                i += 1
-        if wersja == "K":  # wersja na kolumny
-            i = 0
+        wersja = input("Zrobiłam dwie wersja - na listę w jednym wierszu i matrycę dla list zagnieżdżonych. W/M").capitalize()
+        if wersja == "W":  # wersja z listą w jednym wierszu
+            lista = ['tutaj jest komórka 1', 'tutaj jest komórka 2', 'tutaj jest komórka 3 - ostatnia na liście']
             długość_listy = len(lista)
             góra = "+" + 30 * "-"
-            środek = (30 - len(lista[i])) * " "
+            środek_lista = ""
             dół = "+" + 30 * "-"
+            i = 0
+            for opis in lista:
+                if len(lista[i]) > 30:
+                    środek = "|" + lista[i][:27] + "..."
+                else:
+                    środek = "|" + lista[i] + (30 - len(lista[i])) * " "
+                środek_lista = środek_lista + środek
+                i += 1
+            print(góra * długość_listy + "+")
+            print(środek_lista + "|")
+            print(dół * długość_listy + "+")
+        if wersja == "M":  # wersja z matrycą dla list zagnieżdżonych
+            lista = [["opis komórki 00",'opis komóki 01'],
+                     ["opis komórki 10",'opis komóki 11'],
+                     ["opis komórki 20",'opis komóki 21']]
+            góra = "+" + 30 * "-"
+            ilość_kolumn = 2
+            środek_lista = ""
+            dół = "+" + 30 * "-"
+            ilość_wierszy = 2
+            i = 0
+            j = 0
+            for i, j in lista:
+                środek = lista[i][i]
+                print(środek)
+                # środek_lista = środek_lista + środek
 
-            print(góra * długość_listy)
-            print("|" + f"{środek}|".join(i for i in lista) + "|")
-            print(dół * długość_listy)
-
-        print("Koniec zadania 6")
+                # if len(lista[i]) > 30:
+                #     środek = "|" + lista[i][:27] + "..."
+                # else:
+                #     środek = "|" + lista[i] + (30 - len(lista[i])) * " "
+                # środek_lista = środek_lista + środek
+                # i += 1
+            print(góra * ilość_kolumn + "+")
+            print(środek_lista + "|")
+            print(dół * ilość_wierszy + "+")
+            # i = 0
+            # długość_listy = len(lista)
+            # góra = "+" + 30 * "-"
+            # środek = (30 - len(lista[i])) * " "
+            # dół = "+" + 30 * "-"
+            # print(góra * długość_listy)
+            # print("|" + f"{środek}|".join(i for i in lista) + "|")
+            # print(dół * długość_listy)
 
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
@@ -289,8 +287,8 @@ def rysowanie_listy():
 lista_programów = ["Witaj w Multitool. Wybierz program który cię interesuje: ",
                   "1) Rysowanie prostokątu o zadanych parametrach",
                   "2) Rysowanie piramidy o określonej wysokości",
-                  "3) Przeliczanie C->F"
-                  "4) Przeliczanie C->F",
+                  "3) Przeliczanie C->F",
+                  "4) Przeliczanie F->C",
                   "5) Pierwsza i ostatnia cyfra z liczby",
                   "6) Przeliczanie liczy binarnej na dziesiętną",
                   "7) Sprawdenie czy rok jest przestępny",
@@ -311,12 +309,16 @@ while zapytaj_ponownie == "T":
     if wybór.isalpha():
         wybór_litera = wybór.upper()
         if wybór_litera == "R":
-            print("Wybrałeś losowy wybór programu")
+            from random import randint
+            x = randint(0, 9)
+            info = f"Wybrałeś losowy wybór programu. Przejdziesz teraz do punktu {x}"
+            #i co dalej?
         elif wybór_litera == "X":
-            print("Koniec. Dzięki, że tu zajrzałeś 😉")
+            info = "Koniec. Dzięki, że tu zajrzałeś 😉"
             break
         else:
-            print("Twój wybór jest niepoprawny")
+            info = "Twój wybór jest niepoprawny"
+        print(info)
     if wybór.isdigit():
         wybór_liczba = int(wybór)
         if wybór_liczba == 1:
