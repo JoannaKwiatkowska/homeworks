@@ -1,18 +1,3 @@
-# Od dziś też będę zwaracał uwagę na to czy nie tylko kod działa ale:
-# a) czy składanie jest ładna i zgodna ze standardami
-# b) czy kod jest zabezpieczony przed wprowadzaniem niepoprawnych danych
-#    (np jeśli prosimy o liczbę a dostaniemy znaki poprośmy użytkownika o podanie danej jeszcze raz)
-# c) czy metody są udokumentowane a co ciekawsze fragmentu kodu opatrzone komentarzem.
-# d) parametryzacja, im większy wpływ na program i jakieś parametry tym fajniej :)
-# e) wydzielanie uniwersalnych fragmentów kodów do osobnych funckji
-#
-# Zadania:
-# 1) Prośba o przepisanie dotychczasowych proagramów z wykorzystaniem definiowania własnych funkcji i wytycznych powyżej
-# 2) Stworzenie "programu nakładki" na dotychczasowe programiki.
-#    Po wyborze danego programu z "menu" uruchomi się odpowiedni i po wykonaniu danej operacji zapyta czy wykonać inny program.
-#    Sugeruje by każdy "podprogram był oddzielną funkcją".
-#    Miejmy na uwadze to by w przyszłości ten program rozwijać podpinając kolejny "podprogram" - powinno to być najprostsze jak się da (np tylko zmiana menu i jakiegoś jednego ifa?:) )
-
 #=======================================================================================================================
 def rysowanie_prostokąta():
     """Funkcja rysująca prostokąt o zadanych rozmiarach (wysokość i szerokość)
@@ -22,13 +7,17 @@ def rysowanie_prostokąta():
     while powtórz_zadanie == "T":
         bok_a = input("Podaj wymiar pierwszego boku: ")
         bok_b = input("Podaj wymiar drugiego boku: ")
+        góra = "+" + int(bok_a) * "-" + "+"
+        dół = "+" + int(bok_a) * "-" + "+"
         if bok_a.isdigit() == True and bok_b.isdigit() == True:  # sprawdzenie czy obie wartości to liczby całkowite
-            print("+" + int(bok_a) * "-" + "+")
             for i in range(0, int(bok_b)):
-                print("|" + int(bok_a) * " " + "|")
-            print("+" + int(bok_a) * "-" + "+")
+                środek = "|" + int(bok_a) * " " + "|"
+            print(góra)
+            print(środek)
+            print(dół)
         else:
-            print("Wpisałeś nieporpawne wartości. Użyj tylko liczb całkowitych")
+            błąd = "Wpisałeś nieporpawne wartości. Użyj tylko liczb całkowitych"
+            print(błąd)
         powtórz_zadanie = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def rysowanie_piramidy():
@@ -44,9 +33,11 @@ def rysowanie_piramidy():
         if wysokość.isdigit() == True:
             wysokość = int(wysokość)
             for i in range(0, wysokość):
-                print(" "*(wysokość-i-1)+"#"+"#"*i*2)
+                piramida = " "*(wysokość-i-1)+"#"+"#"*i*2
+                print(piramida)
         else:
-            print(f"{wysokość} to nie jest liczba całkowita. Jakby miałabym narysować półpiętra? :)")
+            błąd = f"{wysokość} to nie jest liczba całkowita. Jakby miałabym narysować półpiętra? :)"
+            print(błąd)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def kalkulator_Celsjusz_Fahenheit():
@@ -73,7 +64,8 @@ def kalkulator_Fahenheit_Celsjusz():
         Fahrenheit = input("Podaj temperaturę w stopniach Fahrenheita: ")
         if Fahrenheit.isdigit() == True:  # tutaj powinno być sprawdzenie czy liczba jest float a nie integer
             Celsjusz_temp = round(((float(Fahrenheit) - 32) / 1.8), 1)
-            wynik = f"{Fahrenheit} stopni Fahrenheit to {Celsjusz_temp} w stopaniach Celsjusza. Wzór to: (Fahrenheit-32)/1.8"
+            wynik = f"{Fahrenheit} stopni Fahrenheit to {Celsjusz_temp} w stopaniach Celsjusza." \
+                    f" Wzór to: (Fahrenheit-32)/1.8"
             # jak poadż wzór z zmiennej Celsjusz_temp?
         else:
             wynik = f"{Fahrenheit} to nie jest poprwana temperatura"
@@ -89,10 +81,7 @@ def cyfra_pierwsza_ostatnia():
         if liczba.isdigit() == False:
             wynik = f"{liczba} to nie jest liczba całkowita"
         else:
-            print(f"Wpisano liczbę {liczba}")
-            cyfra_pierwsza = liczba[0]
-            cyfra_ostatania = liczba[-1]
-            wynik = f"Pierwsza cyfra to {cyfra_pierwsza}, ostatnia cyfra to {cyfra_ostatania}"
+            wynik = f"Wpisano liczbę {liczba}. Cyfra pierwsza to {liczba[0]}, a cyfra ostatnia to {liczba[-1]}."
         print(wynik)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
@@ -101,23 +90,21 @@ def binara_na_dziesiętną(): #to jest do dopracowania
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
         binarna = input("Podaj liczbę binarną do przeliczenia na dziesiętną: ")
-        licznik = int(1)
         wynik = int(binarna[-1]) ** 0  # ostatnia liczba do potęgi zerowej 0**=0, dowolna inna liczba**0=1
-        # niebinarne = ["2","3","4","5","6","7","8","9"]
-        if "2" not in list(binarna) and "3" not in list(binarna) and "4" not in list(binarna) and "5" not in list(
-                binarna) \
-                and "6" not in list(binarna) and "7" not in list(binarna) and "8" not in list(
-            binarna) and "9" not in list(binarna):
-            # binarna.find("1") != 0 or binarna.find("0") != 0:
+        ilosc_0 = binarna.count("0")
+        ilosc_1 = binarna.count("1")
+        dlugosc_liczby = len(binarna)
+        licznik = 1
+        if ilosc_0 == dlugosc_liczby or ilosc_1 == dlugosc_liczby or ilosc_0+ilosc_1 == dlugosc_liczby:
+            # sprawdzam czy liczba składa się z samych znaków 0 i 1
             while licznik in range(1, len(binarna)):
-                dziesiętna = int(binarna[-(licznik + 1)]) * 2 ** (licznik)  # dlaczego 1 do potęgi 0 daje zero?
-                wynik = wynik + dziesiętna
-                licznik = licznik + 1
-            print(f"Liczba binarna {binarna} to liczba dziesiętna {wynik}")
+                dziesietna = int(binarna[-(licznik + 1)]) * 2 ** (licznik)
+                wynik = wynik + dziesietna
+                licznik += 1
+            wynik_obliczen = f"Liczba binarna {binarna} to liczba dziesiętna {wynik}"
         else:
-            print(f"Liczba {binarna} nie jest liczbą binarną")
-        # print(f"Liczba binarna {binarna} to liczba dziesiętna {wynik}")
-
+            wynik_obliczen = f"Liczba {binarna} nie jest liczbą binarną"
+        print(wynik_obliczen)
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 def rok_przestępny():
@@ -150,13 +137,13 @@ def kalkulator_piskie_lata():
                 ludzkie_lata = wiek_psa_int * 10.5
             else:  # po drugim roku psi rok to 4 ludzkie lata
                 ludzkie_lata = int(2 * 10.5) + (wiek_psa_int - 2) * 4
-            # sprawdzanie poprawnej odmiany liczb dla lat psich
+            # sprawdzanie poprawnej odmiany lat dla lat psich
             odmiana_liczby_pies = "lat" # w liczbach po cyfrach 0, 1 i od 5 do 9 występuje dopełniacz liczby mnogiej
             if wiek_psa_int == 1:
                 odmiana_liczby_pies = "rok"
             elif wiek_psa_str[-1] in ("2","3","4"): # w liczbach po cyfrach 2,3 i 4 występuje rzeczownik w mianowniku
                 odmiana_liczby_pies = "lata"
-            # sprawdzanie poprawnej odmiany liczb dla lat ludzkich
+            # sprawdzanie poprawnej odmiany lat dla lat ludzkich
             odmiana_liczby_człowiek = "lat"
             if str(ludzkie_lata)[-1] in ("2","3","4"):
                 odmiana_liczby_człowiek = "lata"
@@ -225,14 +212,12 @@ def rysowanie_listy():
     Dla list zagnieżdżonych narysuje się tabela z odpowiednią ilością wierszy i kolumn"""
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
-
         wersja = input("Zrobiłam dwie wersja - na listę w jednym wierszu i matrycę dla list zagnieżdżonych. W/M").capitalize()
+        ramka = "+" + 30 * "-"
         if wersja == "W":  # wersja z listą w jednym wierszu
             lista = ['tutaj jest komórka 1', 'tutaj jest komórka 2', 'tutaj jest komórka 3 - ostatnia na liście']
             długość_listy = len(lista)
-            góra = "+" + 30 * "-"
             środek_lista = ""
-            dół = "+" + 30 * "-"
             i = 0
             for opis in lista:
                 if len(lista[i]) > 30:
@@ -241,49 +226,38 @@ def rysowanie_listy():
                     środek = "|" + lista[i] + (30 - len(lista[i])) * " "
                 środek_lista = środek_lista + środek
                 i += 1
-            print(góra * długość_listy + "+")
+            print(ramka * długość_listy + "+")
             print(środek_lista + "|")
-            print(dół * długość_listy + "+")
+            print(ramka * długość_listy + "+")
         if wersja == "M":  # wersja z matrycą dla list zagnieżdżonych
-            lista = [["opis komórki 00",'opis komóki 01'],
+            lista = [["opis komórki 00 bardzo długi opis",'opis komóki 01'],
                      ["opis komórki 10",'opis komóki 11'],
                      ["opis komórki 20",'opis komóki 21']]
-            góra = "+" + 30 * "-"
-            ilość_kolumn = 2
-            środek_lista = ""
-            dół = "+" + 30 * "-"
-            ilość_wierszy = 2
-            i = 0
             j = 0
-            for i, j in lista:
-                środek = lista[i][i]
-                print(środek)
-                # środek_lista = środek_lista + środek
-
-                # if len(lista[i]) > 30:
-                #     środek = "|" + lista[i][:27] + "..."
-                # else:
-                #     środek = "|" + lista[i] + (30 - len(lista[i])) * " "
-                # środek_lista = środek_lista + środek
-                # i += 1
-            print(góra * ilość_kolumn + "+")
-            print(środek_lista + "|")
-            print(dół * ilość_wierszy + "+")
-            # i = 0
-            # długość_listy = len(lista)
-            # góra = "+" + 30 * "-"
-            # środek = (30 - len(lista[i])) * " "
-            # dół = "+" + 30 * "-"
-            # print(góra * długość_listy)
-            # print("|" + f"{środek}|".join(i for i in lista) + "|")
-            # print(dół * długość_listy)
-
+            kolumny = []
+            for element in lista:
+                i = 0
+                środek_lista = ""
+                for opis in element:
+                    if len(opis) > 30:
+                        środek = "|" + opis[:27] + "..."
+                    else:
+                        środek = "|" + opis + (30 - len(opis)) * " "
+                    środek_lista = środek_lista + środek
+                    i += 1
+                if j == 0:
+                    print(ramka * i + "+")
+                    print(środek_lista + "|")
+                    print(ramka * i + "+")
+                elif j >= 1:
+                    print(środek_lista + "|")
+                    print(ramka * i + "+")
+                j += 1
         jeszcze_raz = input("\nCzy chcesz powtórzyć? [T/N]").upper()
 #=======================================================================================================================
 #=======================================================================================================================
 #=======================================================================================================================
 #=======================================================================================================================
-
 lista_programów = ["Witaj w Multitool. Wybierz program który cię interesuje: ",
                   "1) Rysowanie prostokątu o zadanych parametrach",
                   "2) Rysowanie piramidy o określonej wysokości",
@@ -298,21 +272,17 @@ lista_programów = ["Witaj w Multitool. Wybierz program który cię interesuje: 
                   "11) Rysowanie listy",
                   "R) Wybierz program losowo bo nie wiem czego szukam:)",
                   "X) Wyjście z programu"]
-
-print(f"\n".join(i for i in lista_programów) +"\n") #rozdzielam elementy listy nową linią i kończę pustą linią
-
 zapytaj_ponownie = "T"
-
 while zapytaj_ponownie == "T":
-
+    print(f"\n".join(i for i in lista_programów) + "\n")  # rozdzielam elementy listy nową linią i kończę pustą linią
     wybór = input("Twój wybór: ")
     if wybór.isalpha():
         wybór_litera = wybór.upper()
         if wybór_litera == "R":
             from random import randint
-            x = randint(0, 9)
-            info = f"Wybrałeś losowy wybór programu. Przejdziesz teraz do punktu {x}"
-            #i co dalej?
+            los = randint(1, 11) # losowy wybór programu
+            wybór = str(los) # zamiana na str, ponieważ funkcja isdigit() w kolejnym if działa tylko dla str
+            info = f"Wybrałeś losowy wybór programu. Przejdziesz teraz do zadania {wybór}\t"
         elif wybór_litera == "X":
             info = "Koniec. Dzięki, że tu zajrzałeś 😉"
             break
@@ -343,5 +313,7 @@ while zapytaj_ponownie == "T":
             rozmieniarka_pieniędzy()
         elif wybór_liczba == 11:
             rysowanie_listy()
-
+        else:
+            info = "Twój wybór jest niepoprawny"
+            print(info)
     zapytaj_ponownie = input("\nCzy chcesz uruchomić inny program? [T/N]").upper()
