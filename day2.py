@@ -1,9 +1,12 @@
+
 # comments #komentarz w jednej
 # można jednocześnie zakomentować i odkomentować kilka linijek - zaznaczasz wszystkie i kombinacja klawiszy: Ctrl + /
 # znak \ to backslash, a znak / to slash
 """comments 
 in few lines
 """
+
+# edycja configuracji Ctrl + Shift + F10
 
 x = input("Podaj liczbę pierwszą: ")
 y = input("Podaj liczbę druga: ")
