@@ -39,13 +39,53 @@
 import pickle
 
 entries = [
-    {"title": "Pierwszy wpis", "body": "Teść pierwszego wpisu", "author": "Lukasz", "date": "2019-11-07"},
-    {"title": "Drugi wpis", "body": "Teść pierwszego wpisu", "author": "Lukasz", "date": "2019-11-07"}
+    {"title": "Pierwszy wpis", "body": "Tesc pierwszego wpisu", "author": "Lukasz", "date": "2019-11-07"},
+    {"title": "Drugi wpis", "body": "Tesc pierwszego wpisu", "author": "Lukasz", "date": "2019-11-07"}
 ]
 
-# lista to typ binarny, więc musimy dać 'wb' albo 'rb+'
-with open('book.pkl', 'rb+') as book_file:
-    #pickle.dump(entries, book_file)
-    data = pickle.load(book_file)
-    print(data)
+# program pyta użytkoniwka o tytul, tresc i imie
+# dodaje wpis do ksiazki
+# wyswietla informacje ile wpisow znajduje sie w ksiazce
 
+# 1 program pyta użytkoniwka o tytul, tresc i imie
+title = input("Podaj tytuł: ")
+body = input("Podaj treść: ")
+author = input("Podaj autora: ")
+date = '2019-11-07'
+
+# 2 tworzy słownik
+new_entry = {"title": title, "body": body, "author": author, "date": date}
+print(new_entry)
+
+# 3 otwieranie pliku i odczytujemy stare wpisy
+with open('book.pkl', 'rb+') as book_file: # lista to typ binarny, więc musimy dać 'wb' albo 'rb+'
+    # pickle.dump(new_entry, book_file)  # dump to zapisz - trzeba to zrobić na poczatku żeby plik nie był pusty
+    old_entries = pickle.load(book_file)
+    print(old_entries)
+    # 4 dodanie nowego wpisu
+    try:
+        old_entries.append(new_entry)
+    except:
+        old_entries = []
+    print(old_entries)
+    # 5 policz ilość wpisów
+    counter = len(old_entries)
+    # 6 połącz
+    book_file.seek(0)
+    pickle.dump(old_entries, book_file)  # dump to zapisz
+    # 7 wyświetl ilość wpisów
+    print(counter)
+    # 8
+    print("Dzięki")
+
+
+# # PROBLEMY
+# try:  # try zatzrymuje się na 1 wyjątku
+#     division = 10 / 0
+#     print(unresolved_variable)
+# except ZeroDivisionError:
+#     print('Nie dziel przez 0')
+# except NameError:
+#     print('Brakuje zmiennej')
+# except:
+#     print('Nie wiem co sie stało')
