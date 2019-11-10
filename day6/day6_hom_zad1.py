@@ -15,22 +15,31 @@
 #    68923455
 #    etc
 #    "
-#
-#    Przydatny generator tekstów: http://lipsum.pl/
 
+# otworzenie pliku ze statystyką i zapisanie kolejnego użycia pliku
+with open('statystyka.txt', 'a+') as file:
+    file.seek(0)  # ustawienie na pierwszym znaku
+    linia = file.readline()
+    linia = linia[30:]  # zaczytanie fragmentu tekstu od znaku 27 do końca
+    linia_int = int(linia)+1  # zamiana fragmentu tesktu na liczbę
+    file.truncate(30)  # usunięcie tekstu od 27 znaku do końca
+    file.write(f'{linia_int}')
+    print(f'Ilosc uruchomien: {linia_int}')
+
+# otworzenie i przeczytanie pliku tekstowego
 with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
     tekst_reader = tekst.read()
 
-    # ilość użyć poszczególnych literek i cyfr, ilość wyrazów, zdań etc.
-    # znajdz = input("Podaj literkę, cyfrę albo słowo, które mam znaleźć: ")
-    # znajdywanie = tekst_rader.count(znajdz)
-    # print(f"W tekście '{znajdz}' występuje {znajdywanie} razy")
-
     # ilość zdań - trzeba usnąć z tego dodać wszystkie skróty polskie koczące się kropką
     zdania = tekst_reader.count(".") + tekst_reader.count("!") + tekst_reader.count("?") + tekst_reader.count("...")
-    print(f"Zdań jest maksymalnie: {zdania}")
-    # uwzględnianie skrótów i skrótowców w jezyku polskim?
-    # zdań będzie nie więcej niż jest dużych znaków, jeżeli zdania nie zaczynaja się od liczby
+    # można policzyć ilość dużych znaków, które są poporzedzone "." i spacją + 1 (dla pierwszego zdania)
+    # wyjątek to zdanie ropoczynające sie od liczby
+    wynik = f"Zdań jest maksymalnie: {zdania}."
+    print(wynik)
+
+    # zpis statystyk do pliku ze statystykami
+    with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+        file.write(f"\n{wynik}")
 
     # ilość wyrazów i liczb
     wyrazy = tekst_reader.split()  # podział teksu na wyrazy metodą split
@@ -71,14 +80,23 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
     # ilość znaków ogólnie
     znaki = list(tekst_reader)  # podział teksu na litery metodą list
     ile_znakow = len(znaki)
-    print(f"Liczb jest: {ile_liczb}, cyfr jest {ile_cyfr}.\n"
-          f"Wyrazów jest: {ile_wyrazow}, liter jest {litera_alf}.\n"
-          f"Znaków interpunkcyjnych jest: {ile_znakow-cyfra-litera_alf}.\n"
-          f"Lacznie wszystkich znakow jest: {ile_znakow}")
+
+    # pokaż statytykę przed zapisem do pliku
+    wynik = (f"\nLiczb jest: {ile_liczb}, cyfr jest {ile_cyfr}.\n"
+             f"Wyrazów jest: {ile_wyrazow}, liter jest {litera_alf}.\n"
+             f"Znaków interpunkcyjnych jest: {ile_znakow-cyfra-litera_alf}.\n"
+             f"łącznie wszystkich znaków jest: {ile_znakow}.\n")
+    print(wynik)
+
+    # zpis statystyk do pliku ze statystykami
+    with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+        file.write(wynik)
 
     # ilość użyć poszczególnych cyfr
     zobacz = input("\nCzy chcesz zobaczyć statystykę cyfr? T/N")
     if zobacz.upper() == "T":
+        with open('statystyka.txt', 'a+') as file:
+            file.write(f"\nStatystyka cyfr w pliku:\n")
         cyfry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         for cyfra in cyfry:
             ile_razy = 0
@@ -88,15 +106,15 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
             wynik = f"Cyfra {cyfra} występuje {ile_razy} razy, procentowy udział cyfry w tekście" \
                     f" {int(ile_razy/ile_znakow*100)} %, w liczbach {int(ile_razy/ile_cyfr*100)} %"
             print(wynik)
-    elif zobacz.upper() == "N":
-        pass
+            # zpis statystyki cyfr do osobnego pliku
+            with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+                file.write(f"{wynik}\n")
     else:
-        print("Wpisałeś niepoprawną literę, więc ci ją pokażę")
+        pass
 
     # ilość użyć poszczególnych literek
     zobacz = input("\nCzy chcesz zobaczyć statystykę liter? T/N")
     if zobacz.upper() == "T":
-
         # ilość małych i dużych liter oraz cyfr i znaków interpukcyjnych
         ile_malych = 0
         ile_duzych = 0
@@ -105,22 +123,31 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
                 ile_malych += 1
             if litera.isupper() is True:
                 ile_duzych += 1
-        print(f"Dużych liter jest {ile_duzych}, małych liter jest: {ile_malych}")
+        wynik = f"Dużych liter jest: {ile_duzych}, małych liter jest: {ile_malych}."
+        print(wynik)
+        with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+            file.write(f"\nStatystyka liter w pliku:\n{wynik}")
 
         # możliwość wyboru trybu case sensitivity
         import string
         sensitive = input("Czy uwzględniać małe i duże litery? T/N")
         if sensitive.upper() == "T":
             litery = string.ascii_letters  # abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+            tryb = "Wybrałeś rozróżnienie pomiędzy małymi i dużymi literami"
         elif sensitive.upper() == "N":
             litery = string.ascii_lowercase
             # lowercase: abcdefghijklmnopqrstuvwxyz,
             # uppercase: ABCDEFGHIJKLMNOPQRSTUVWXYZ
             tekst_reader = tekst_reader.lower()
+            tryb = "Wybrałeś brak rozróżnienie pomiędzy małymi i dużymi literami"
         else:
             litery = string.ascii_lowercase
             tekst_reader = tekst_reader.lower()
-            print("Wpisałeś niepoprawną literę, więc wybieram za Ciebie brak trybu case sensitivity")
+            tryb = "Wpisałeś niepoprawną litere, więc wybieram za Ciebie " \
+                   "brak rozróżnienia pomiędzy małymi i dużymi literami"
+
+        with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+            file.write(f"\n{tryb}.")
 
         # policzenie ilosci uzyc poszczegolnych literek w tekscie
         for litera in litery:
@@ -128,10 +155,34 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
             for litera_ciagu in tekst_reader:
                 if litera_ciagu == str(litera):
                     ile_razy += 1
-            wynik = f"Literaz {litera} występuje {ile_razy} razy, procentowy udział cyfry w tekście" \
-                    f" {int(ile_razy/ile_znakow*100)} %"
+            wynik = f"Litera {litera} występuje {ile_razy} razy, procentowy udział cyfry w tekście" \
+                    f" {int(ile_razy/ile_znakow*100)} %, w lietrach {int(ile_razy/litera_alf*100)} %"
             print(wynik)
-    elif zobacz.upper() == "N":
-        pass
+            with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+                file.write(f"\n{wynik}")
+
+        # znjadywanie tekstu podanego przez użytkoniwka
+        zobacz = input("\nCzy chcesz znaleźć jakiś konkretny tekst? T/N")
+        if zobacz.upper() == "T":
+            with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+                file.write(f"\n\nZnajdywanie wyrazów podanych przez użytkownika\n")
+            jeszcze_raz = "T"
+            while jeszcze_raz == "T":
+                znajdz = input("Podaj literkę, cyfrę albo słowo, które mam znaleźć: ")
+                if sensitive.upper() == "T":
+                    znajdywanie = tekst_reader.count(znajdz)
+                    wynik = f"Wyraz:'{znajdz}' występuje w tekście {znajdywanie} razy."
+                    print(wynik)
+                else:
+                    znajdz = znajdz.lower()
+                    znajdywanie = tekst_reader.count(znajdz)
+                    wynik = f"Wyraz:'{znajdz}' występuje w tekście {znajdywanie} razy."
+                    print(wynik)
+                # zpis statystyk do osobnego pliku
+                with open('statystyka.txt', 'a+', encoding='utf-8') as file:
+                    file.write(f"{wynik}\n")
+                jeszcze_raz = input("\nCzy chcesz znaleźć kolejny wyraz? [T/N]").upper()
+            else:
+                pass
     else:
-        print("Wpisałeś niepoprawną literę, więc ci ją pokażę")
+        pass
