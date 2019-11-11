@@ -24,24 +24,13 @@ with open('statystyka.txt', 'a+') as file:
     linia_int = int(linia)+1  # zamiana fragmentu tesktu na liczbę
     file.truncate(30)  # usunięcie tekstu od 27 znaku do końca
     file.write(f'{linia_int}')
-    print(f'Ilosc uruchomien: {linia_int}')
+    print(f'Ilość uruchomień: {linia_int}')
 
 # otworzenie i przeczytanie pliku tekstowego
 with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
     tekst_reader = tekst.read()
 
-    # ilość zdań - trzeba usnąć z tego dodać wszystkie skróty polskie koczące się kropką
-    zdania = tekst_reader.count(".") + tekst_reader.count("!") + tekst_reader.count("?") + tekst_reader.count("...")
-    # można policzyć ilość dużych znaków, które są poporzedzone "." i spacją + 1 (dla pierwszego zdania)
-    # wyjątek to zdanie ropoczynające sie od liczby
-    wynik = f"Zdań jest maksymalnie: {zdania}."
-    print(wynik)
-
-    # zpis statystyk do pliku ze statystykami
-    with open('statystyka.txt', 'a+', encoding='utf-8') as file:
-        file.write(f"\n{wynik}")
-
-    # ilość wyrazów i liczb
+    # podział tekstu na wyrazy
     wyrazy = tekst_reader.split()  # podział teksu na wyrazy metodą split
 
     # liczby
@@ -55,12 +44,14 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
                 cyfra += 1
         if cyfra >= 1:
             ile_liczb += 1
+
     # cyfry
     ile_cyfr = 0
     for slowo in wyrazy:
         for litera in slowo:  # jeżeli jakakolwiek litera w wyrazie jest cyfrą to przyjmij, że to liczba
             if litera.isdigit() is True:
                 ile_cyfr += 1
+
     # słowa - słowami nie są znaki iterpunkcyjne np. " - "
     litera_alf = 0
     ile_wyrazow = 0  # zadziała tak samo jak len(wyrazy)
@@ -71,19 +62,42 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
                 litera_alf += 1
         if litera_alf >= 1:
             ile_wyrazow += 1
+
     # litery
     litera_alf = 0
     for slowo in wyrazy:
         for litera in slowo:  # jeżeli jakakolwiek litera w wyrazie jest litera to przyjmij, że to wyraz
             if litera.isalpha() is True:
                 litera_alf += 1
+
     # ilość znaków ogólnie
     znaki = list(tekst_reader)  # podział teksu na litery metodą list
     ile_znakow = len(znaki)
 
+    # ilość zdań
+    znak = 0
+    zdania = 0
+    import string
+    duze_litery = string.ascii_uppercase  # ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    cyfry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    for litera in list(tekst_reader):
+        # ostatnia kropka, po której nie ma już dalszych znaków, dlatego dodaję +1
+        if ile_znakow - znak < 2 and tekst_reader[znak] in ('.', '!', '?'):
+            zdania += 1
+        # zdanie kończące się kropką, a następne rozpoczynające się od nowej linii
+        elif tekst_reader[znak] in ('.', '!', '?') and tekst_reader[(znak+1)] == '\n':
+            zdania += 1
+        # zdanie kończące się kropką, a następne rozpoczynające się od dużej litery bądź cudzysłowia
+        elif tekst_reader[znak] in ('.', '!', '?') and tekst_reader[(znak+1)] == ' ' \
+                and (tekst_reader[(znak+2)] in duze_litery or tekst_reader[(znak+2)] == '"'
+                     or tekst_reader[(znak+2)] in cyfry):
+            zdania += 1
+        # wyjątek to zdanie ropoczynające sie od liczby
+        znak += 1
+
     # pokaż statytykę przed zapisem do pliku
     wynik = (f"\nLiczb jest: {ile_liczb}, cyfr jest {ile_cyfr}.\n"
-             f"Wyrazów jest: {ile_wyrazow}, liter jest {litera_alf}.\n"
+             f"Zdań jest: {zdania}, wyrazów jest: {ile_wyrazow}, liter jest {litera_alf}.\n"
              f"Znaków interpunkcyjnych jest: {ile_znakow-cyfra-litera_alf}.\n"
              f"łącznie wszystkich znaków jest: {ile_znakow}.\n")
     print(wynik)
@@ -97,7 +111,7 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
     if zobacz.upper() == "T":
         with open('statystyka.txt', 'a+') as file:
             file.write(f"\nStatystyka cyfr w pliku:\n")
-        cyfry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        # cyfry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] - cyfry są podane wyżej
         for cyfra in cyfry:
             ile_razy = 0
             for litera in tekst_reader:
