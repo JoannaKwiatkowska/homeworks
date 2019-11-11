@@ -107,8 +107,8 @@ with open('tekst.txt', 'r+', encoding='utf-8') as tekst:
         file.write(wynik)
 
     # ilość użyć poszczególnych cyfr
-    zobacz = input("\nCzy chcesz zobaczyć statystykę cyfr? T/N")
-    if zobacz.upper() == "T":
+    zobacz = input("\nCzy chcesz zobaczyć statystykę cyfr? T/N").upper()
+    if zobacz == "T":
         with open('statystyka.txt', 'a+') as file:
             file.write(f"\nStatystyka cyfr w pliku:\n")
         # cyfry = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] - cyfry są podane wyżej
