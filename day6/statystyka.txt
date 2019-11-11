@@ -1,7 +1,6 @@
-Ilość uruchomień programu: 14
-Zdań jest maksymalnie: 38.
+Ilość uruchomień programu: 79
 Liczb jest: 37, cyfr jest 109.
-Wyrazów jest: 210, liter jest 1343.
+Zdań jest: 16, wyrazów jest: 210, liter jest 1343.
 Znaków interpunkcyjnych jest: 503.
 łącznie wszystkich znaków jest: 1846.
 
@@ -72,7 +71,3 @@ Litera W występuje 5 razy, procentowy udział cyfry w tekście 0 %, w lietrach 
 Litera X występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
 Litera Y występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
 Litera Z występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-
-Znajdywanie wyrazów podanych przez użytkownika
-Wyraz:'to' występuje w tekście 8 razy.
-Wyraz:'To' występuje w tekście 1 razy.
