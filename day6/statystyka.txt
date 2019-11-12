@@ -1,4 +1,4 @@
-Ilość uruchomień programu: 79
+Ilość uruchomień programu: 109
 Liczb jest: 37, cyfr jest 109.
 Zdań jest: 16, wyrazów jest: 210, liter jest 1343.
 Znaków interpunkcyjnych jest: 503.
@@ -18,56 +18,33 @@ Cyfra 9 występuje 5 razy, procentowy udział cyfry w tekście 0 %, w liczbach 4
 
 Statystyka liter w pliku:
 Dużych liter jest: 27, małych liter jest: 1316.
-Wybrałeś rozróżnienie pomiędzy małymi i dużymi literami.
+Wybrałeś brak rozróżnienie pomiędzy małymi i dużymi literami.
 Litera a występuje 94 razy, procentowy udział cyfry w tekście 5 %, w lietrach 6 %
 Litera b występuje 17 razy, procentowy udział cyfry w tekście 0 %, w lietrach 1 %
 Litera c występuje 49 razy, procentowy udział cyfry w tekście 2 %, w lietrach 3 %
-Litera d występuje 48 razy, procentowy udział cyfry w tekście 2 %, w lietrach 3 %
+Litera d występuje 49 razy, procentowy udział cyfry w tekście 2 %, w lietrach 3 %
 Litera e występuje 97 razy, procentowy udział cyfry w tekście 5 %, w lietrach 7 %
 Litera f występuje 1 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera g występuje 15 razy, procentowy udział cyfry w tekście 0 %, w lietrach 1 %
+Litera g występuje 18 razy, procentowy udział cyfry w tekście 0 %, w lietrach 1 %
 Litera h występuje 11 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
 Litera i występuje 106 razy, procentowy udział cyfry w tekście 5 %, w lietrach 7 %
-Litera j występuje 25 razy, procentowy udział cyfry w tekście 1 %, w lietrach 1 %
+Litera j występuje 27 razy, procentowy udział cyfry w tekście 1 %, w lietrach 2 %
 Litera k występuje 56 razy, procentowy udział cyfry w tekście 3 %, w lietrach 4 %
-Litera l występuje 37 razy, procentowy udział cyfry w tekście 2 %, w lietrach 2 %
-Litera m występuje 27 razy, procentowy udział cyfry w tekście 1 %, w lietrach 2 %
-Litera n występuje 58 razy, procentowy udział cyfry w tekście 3 %, w lietrach 4 %
+Litera l występuje 39 razy, procentowy udział cyfry w tekście 2 %, w lietrach 2 %
+Litera m występuje 28 razy, procentowy udział cyfry w tekście 1 %, w lietrach 2 %
+Litera n występuje 60 razy, procentowy udział cyfry w tekście 3 %, w lietrach 4 %
 Litera o występuje 127 razy, procentowy udział cyfry w tekście 6 %, w lietrach 9 %
-Litera p występuje 47 razy, procentowy udział cyfry w tekście 2 %, w lietrach 3 %
+Litera p występuje 50 razy, procentowy udział cyfry w tekście 2 %, w lietrach 3 %
 Litera q występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
 Litera r występuje 68 razy, procentowy udział cyfry w tekście 3 %, w lietrach 5 %
-Litera s występuje 68 razy, procentowy udział cyfry w tekście 3 %, w lietrach 5 %
-Litera t występuje 61 razy, procentowy udział cyfry w tekście 3 %, w lietrach 4 %
-Litera u występuje 52 razy, procentowy udział cyfry w tekście 2 %, w lietrach 3 %
+Litera s występuje 71 razy, procentowy udział cyfry w tekście 3 %, w lietrach 5 %
+Litera t występuje 62 razy, procentowy udział cyfry w tekście 3 %, w lietrach 4 %
+Litera u występuje 56 razy, procentowy udział cyfry w tekście 3 %, w lietrach 4 %
 Litera v występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera w występuje 75 razy, procentowy udział cyfry w tekście 4 %, w lietrach 5 %
+Litera w występuje 80 razy, procentowy udział cyfry w tekście 4 %, w lietrach 5 %
 Litera x występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
 Litera y występuje 38 razy, procentowy udział cyfry w tekście 2 %, w lietrach 2 %
 Litera z występuje 60 razy, procentowy udział cyfry w tekście 3 %, w lietrach 4 %
-Litera A występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera B występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera C występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera D występuje 1 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera E występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera F występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera G występuje 3 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera H występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera I występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera J występuje 2 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera K występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera L występuje 2 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera M występuje 1 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera N występuje 2 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera O występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera P występuje 3 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera Q występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera R występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera S występuje 3 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera T występuje 1 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera U występuje 4 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera V występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera W występuje 5 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera X występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera Y występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
-Litera Z występuje 0 razy, procentowy udział cyfry w tekście 0 %, w lietrach 0 %
+
+Znajdywanie wyrazów podanych przez użytkownika
+Wyraz:'to' występuje w tekście 9 razy.
