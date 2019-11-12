@@ -104,12 +104,12 @@ def binara_na_dziesietna():  # to jest do dopracowania
     jeszcze_raz = "T"
     while jeszcze_raz == "T":
         binarna = input("Podaj liczbę binarną do przeliczenia na dziesiętną: ")
-        wynik = int(binarna[-1]) ** 0  # ostatnia liczba do potęgi zerowej 0**=0, dowolna inna liczba**0=1
         ilosc_0 = binarna.count("0")
         ilosc_1 = binarna.count("1")
         dlugosc_liczby = len(binarna)
         licznik = 1
         if ilosc_0 == dlugosc_liczby or ilosc_1 == dlugosc_liczby or ilosc_0+ilosc_1 == dlugosc_liczby:
+            wynik = int(binarna[-1]) ** 0  # ostatnia liczba do potęgi zerowej 0**=0, dowolna inna liczba**0=1
             # sprawdzam czy liczba składa się z samych znaków 0 i 1
             while licznik in range(1, len(binarna)):
                 dziesietna = int(binarna[-(licznik + 1)]) * 2 ** licznik
